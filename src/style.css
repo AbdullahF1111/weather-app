@@ -1,0 +1,208 @@
+/* عنوان التطبيق الرئيسي */
+h1 {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* تنسيق نموذج البحث في أعلى المنتصف */
+#location-search {
+
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+#location-search label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+}
+
+#location {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#location:focus {
+    border-color: #007bff;
+}
+
+#btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #4ca1af;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btn:hover {
+    background-color: #0056b3;
+}
+
+/* زر تبديل الوحدات (°C / °F) */
+#unit-toggle {
+    margin-top: 90px; /* مسافة كافية للتباعد عن فورم البحث العلوي */
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+}
+
+#unit-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* خلفية عامة ثابتة وناعمة للصفحة */
+body {
+    background: linear-gradient(135deg,#4ca1af, orange );
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* كارت الطقس الأساسي */
+#weather {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    margin-top: 20px;
+    min-width: 300px;
+    transition: background 0.5s ease;
+}
+
+/* 1. الطقس المشمس (Clear Day) - ألوان دافئة وحيوية */
+#weather[data-weather="clear-day"] {
+    background: rgba(243, 156, 18, 0.4);
+    border-color: rgba(255, 204, 0, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(243, 156, 18, 0.3);
+}
+#weather[data-weather="clear-day"] p:nth-of-type(1) {
+    color: #ffe600; /* درجة حرارة صفراء مشمسة */
+}
+
+/* 2. الطقس الممطر (Rain) - ألوان زرقاء هادئة */
+#weather[data-weather="rain"] {
+    background: rgba(41, 128, 185, 0.4);
+    border-color: rgba(52, 152, 219, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(41, 128, 185, 0.3);
+}
+#weather[data-weather="rain"] p:nth-of-type(1) {
+    color: #74b9ff; /* درجة حرارة زرقاء مائية */
+}
+
+/* 3. الطقس الغائم كلياً (Overcast / Cloudy) - ألوان رمادية داكنة */
+#weather[data-weather="cloudy"],
+#weather[data-weather="overcast"] {
+    background: rgba(99, 110, 114, 0.4);
+    border-color: rgba(127, 140, 141, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(99, 110, 114, 0.3);
+}
+#weather[data-weather="cloudy"] p:nth-of-type(1),
+#weather[data-weather="overcast"] p:nth-of-type(1) {
+    color: #dfe6e9; /* درجة حرارة فضية */
+}
+
+/* 4. الطقس الغائم جزئياً (Partly Cloudy Day / Night) - ألوان فاتحة ومنعشة */
+
+#weather[data-weather="partly-cloudy"] {
+    background: rgba(52, 152, 219, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+#weather[data-weather="partly-cloudy-night"] p:nth-of-type(1) {
+    color: #81ecec; /* درجة حرارة سماوية فاتحة */
+}
+
+/* 5. الطقس الثلجي (Snow) - ألوان بيضاء وثلجية باردة (احتياطي لمستقبل المشروع) */
+#weather[data-weather="snow"] {
+    background: rgba(116, 185, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(116, 185, 255, 0.3);
+}
+#weather[data-weather="snow"] p:nth-of-type(1) {
+    color: #ffffff;
+}
+
+/* تعديل ألوان النصوص داخل الكارت لتكون بيضاء وواضحة */
+#weather h2 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+#weather p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: #f1f1f1;
+}
+
+/* تخصيص مظهر درجة الحرارة الكبيرة */
+#weather p:nth-of-type(1) {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffd700; /* لون أصفر مميز لدرجة الحرارة */
+}
+
+/* رسالة الخطأ */
+#Error {
+    color: #ff6b6b;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+/* تصميم الـ Spinner كدائرة تدور بشكل احترافي */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* حركة الدوران */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

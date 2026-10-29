@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <!-- ربط ملف الـ CSS (يُفضل وضعه في الـ head) -->
+    <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+
+    <h1>Weather App</h1>
+    <form id="location-search">
+        <label for="location">Enter The City</label>
+        <input id="location" type="text">
+        <button id="btn" type="submit">Search</button>
+    </form>
+    <button id="unit-toggle" type="button" >Switch to °F</button>
+    <div id="loading" class="spinner" hidden></div>
+
+    <div id="weather">
+        
+    </div>
+    <p id="Error" hidden></p>
+    <script type="module" src="./src/index.js"></script>
+</body>
+
+</html>

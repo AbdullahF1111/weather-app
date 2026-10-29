@@ -6,6 +6,8 @@ const form = document.getElementById("location-search");
 const search = document.getElementById("location");
 const metricSwitch = document.getElementById("unit-toggle");
 const loadingSpinner = document.getElementById("loading");
+const searchBtn = document.getElementById("btn");
+
 let data = null; // آخر كائن جاء من processWeather
 let unit = "C";
 // الاستماع لحدث الـ submit الخاص بالفورم بالكامل
@@ -15,20 +17,21 @@ form.addEventListener("submit", async (e) => {
   const cityName = search.value.trim();
   if (!cityName) return;
 
+  searchBtn.disabled = true;       // قبل try
   loadingSpinner.hidden = false;
+  errorEl.hidden = true;
+
   try {
     const rawData = await getWeather(cityName);
     data = processWeather(rawData);
-    loadingSpinner.hidden = true;
-    errorEl.hidden=true;
     renderWeather(data, unit);
-    console.log(rawData); // أو data بعد التصفية
-    console.log(data);
   } catch (error) {
-    loadingSpinner.hidden = true;
     console.error("Error fetching weather:", error);
     errorEl.textContent = "City not found or network error. Please try again.";
     errorEl.hidden = false;
+  } finally {
+    loadingSpinner.hidden = true;  // يعمل دائماً
+    searchBtn.disabled = false;
   }
 });
 

@@ -39,7 +39,7 @@ A simple, responsive weather application. Search for any city and instantly see 
 Because the project uses ES Modules, it must be served over HTTP (opening `index.html` directly from the file system will not work).
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+git clone https://github.com/AbdullahF1111/weather-app.git
 cd YOUR-REPO-NAME
 npx serve .
 ```
@@ -68,6 +68,3 @@ Or simply use the **Live Server** extension in VS Code.
 - [ ] Weather icons and a multi-day forecast
 - [ ] Use the browser's geolocation on first load
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
